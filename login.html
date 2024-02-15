@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+    <head><title>Login page</title></head>
+    <body> 
+        <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        h1{
+            font-family: sans-serif;
+            font-size: 30px;
+            padding: 25px;
+            text-align: center;
+        }
+        div{
+            text-align: center;
+            margin-top: 10px;
+        }
+        section{
+            height: 650px;
+            width: 400px;
+            border: 1px solid #c3c3c3;
+            border: solid;
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            position: fixed;
+            top: 15%;
+            left: 42%;
+            background: transparent;
+        }
+        input{
+            width: 300px;
+            padding: 15px;
+            border-radius: 20px;
+            border: 2px solid #e1ecea;
+            background: transparent;
+        }
+        button{
+            width: 280px;
+            height: 40px;
+            margin-top: 23px;
+            border-radius: 3px;
+            border: none;
+            background-color: rgb(255, 255, 255);
+            cursor: pointer;
+        }
+        button:hover{
+            background-color: rgba(187, 255, 0, 0.945);
+        }
+        body{
+            background-image: url(1.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        ::placeholder{
+            color: #fff;
+        }
+        label{
+            float: left;
+            padding: 15px;
+            font-family: sans-serif;
+            font-weight: 600;
+            color: #e1ecea;
+        }
+    </style>
+        <section>
+            <div class="bg-img">
+            <h1>LOGIN FORM</h1>
+            <form id="login-form">
+            <div id="user"><label>User Name</label><br>
+                <input type="text"  id="Username" placeholder="Username" required>
+            </div>
+            <div id="email"><label>Email ID</label><br>
+                <input type="text" id="email" placeholder="Email id" required>
+            </div>
+            <div id="password"><label>Password</label><br>
+                <input type="password" id="password" placeholder="password">
+            </div>
+            <div id="confirm-password"><label>Confirm Password</label><br>
+                <input type="password" id="confirm-password" placeholder="confirm password">
+            </div>
+            <div id="butt">
+                <a href="#">
+                <button type="submit">LOGIN</button>
+            </a>
+            </div>
+        </div>
+        </form>
+        </section>
+        <script>
+    document.getElementById('login-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    var username = document.getElementById('username').value.trim();
+    var email = document.getElementById('email').value.trim();
+    var password = document.getElementById('password').value.trim();
+    var confirmPassword = document.getElementById('confirm-password').value.trim();
+
+    if (!validateUsername(username)) {
+        alert('Username is invalid');
+        return;
+    }
+
+    if (!validateEmail(email)) {
+        alert('Email is invalid');
+        return;
+    }
+
+    if (!validatePassword(password)) {
+        alert('Password is invalid');
+        return;
+    }
+
+    if (password != confirmPassword) {
+        alert('Passwords do not match');
+        return;
+    }
+    this.submit();
+});
+
+function validateUsername(username) {
+    var regex = /^[a-zA-Z0-9_]{3,15}$/;
+    return regex.test(username);
+}
+
+function validateEmail(email) {
+    var regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+    return regex.test(email);
+}
+
+function validatePassword(password) {
+    var regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    return regex.test(password);
+}
+        </script>
+    </body>
+</html>
